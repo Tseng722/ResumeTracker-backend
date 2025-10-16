@@ -73,3 +73,33 @@ exports.analyzeJD = async ({jd}) => {
   
 };
 
+exports.analyzeATS = async ({experience,jd}) => {
+  const analyzeATSPrompt = process.env.ANALYZE_ATS_PROMPT;
+  const promptText = `這是公司職缺描述：${jd}, 這是我的履歷：${experience} ${analyzeATSPrompt}`;
+  const geminiBody = {
+    contents: [
+      {
+        parts: [
+          { text: promptText }
+        ]
+      }
+    ]
+  };
+  try {
+    const gResp = await axios.post(`${GEMINI_API_URL}?key=${API_KEY}`, geminiBody, {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: 20000
+      });
+
+    const ATSResult = gResp.data?.candidates?.[0]?.content?.parts?.[0]?.text || '未收到建議';
+    // console.log(resumeResult);
+
+    return ATSResult.trim();
+  } catch (error) {
+    console.error('Gemini error:', err.response?.data || err.message);
+    // res.status(500).json({ resumeResult: '呼叫 Gemini 發生錯誤，請檢查後端日誌' });
+    throw error;
+  }
+  
+};
+

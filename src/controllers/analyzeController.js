@@ -31,3 +31,17 @@ exports.handleAnalyzeJD = async (req, res) => {
   }
 };
 
+exports.handleAnalyzeATS = async (req, res) => {
+  try {
+   
+    const { experience = '', jd = '' } = req.body;
+  
+    const ATSResult = await geminiService.analyzeATS({ experience, jd });
+
+    res.json({ ATSResult });
+  } catch (error) {
+    console.error('分析錯誤:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+

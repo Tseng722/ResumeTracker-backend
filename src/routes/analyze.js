@@ -5,5 +5,6 @@ const analyzeController = require('../controllers/analyzeController');
 
 router.post('/analyzeResume', analyzeController.handleAnalyzeResume);
 router.post('/analyzeJD', analyzeController.handleAnalyzeJD);
+router.post('/analyzeATS', analyzeController.handleAnalyzeATS);
 
 module.exports = router;
