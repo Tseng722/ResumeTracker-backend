@@ -12,6 +12,14 @@ async function createApplication(userId,data){
     const application = await Applications.create(data);
     return application;
 };
+async function getApplicationsByUser(userId){
+  return await Applications.findAll({
+    where: { userId: userId },
+    order: [['applicationDate', 'DESC']],
+  });
+};
+
 module.exports = {
     createApplication,
+    getApplicationsByUser,
 };

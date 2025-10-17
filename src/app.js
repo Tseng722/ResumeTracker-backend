@@ -5,6 +5,7 @@ const app = express();
 const analyzeRoutes = require('./routes/analyze');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const applicationRoutes = require('./routes/applicationRoutes');
 
 
 app.use(cors({
@@ -24,6 +25,6 @@ process.on('uncaughtException', err => {
 app.use('/api/analyze', analyzeRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
-
+app.use('/api/application', applicationRoutes);
 
 module.exports = app;
