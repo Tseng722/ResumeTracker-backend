@@ -38,16 +38,8 @@ const Applications = sequelize.define("Applications", {
         type: DataTypes.INTEGER, // 例如 "06/2024"
         allowNull: true,
     },
-    website: {
-        type: DataTypes.STRING,
-        allowNull: true, 
-    },
     jobDescription: {
         type: DataTypes.TEXT,
-        allowNull: true, 
-    },
-    website: {
-        type: DataTypes.STRING,
         allowNull: true, 
     },
     coverLetter: {
