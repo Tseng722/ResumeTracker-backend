@@ -31,7 +31,7 @@ const Applications = sequelize.define("Applications", {
         allowNull: true,
     },
     website: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(512),
         allowNull: true, 
     },
     howManyApplicant: {
